@@ -24,12 +24,12 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: eventease/eventease-app/eventease-app/  # Replace with your actual project directory
+        working-directory: ./eventease-app  # Replace with your actual project directory
 
       - name: Build solution
         run: dotnet build --no-restore --configuration Release
-        working-directory: eventease/eventease-app/eventease-app/  # Replace with your actual project directory
+        working-directory: ./eventease-app  # Replace with your actual project directory
 
       - name: Run tests
         run: dotnet test --no-build --verbosity normal
-        working-directory: eventease/eventease-app/eventease-app/  # Replace with your actual project directory
+        working-directory: ./eventease-app  # Replace with your actual project directory
