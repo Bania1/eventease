@@ -11,27 +11,25 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest   # You can switch to windows-latest if needed
+    runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Setup .NET SDK (modify dotnet-version as needed)
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.x'  # Adjust to your required .NET version
+          dotnet-version: '9.0.x'
 
-      # Step 3: Restore dependencies
       - name: Restore dependencies
         run: dotnet restore
+        working-directory: eventease/eventease-app/eventease-app/  # Replace with your actual project directory
 
-      # Step 4: Build the solution in Release configuration
       - name: Build solution
         run: dotnet build --no-restore --configuration Release
+        working-directory: eventease/eventease-app/eventease-app/  # Replace with your actual project directory
 
-      # Step 5: Run tests
       - name: Run tests
         run: dotnet test --no-build --verbosity normal
+        working-directory: eventease/eventease-app/eventease-app/  # Replace with your actual project directory
