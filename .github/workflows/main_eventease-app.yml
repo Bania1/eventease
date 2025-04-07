@@ -27,10 +27,13 @@ jobs:
         run: dotnet build --configuration Release eventease-app/eventease-app/eventease-app.csproj
 
       - name: Check directory structure before publish
-        run: ls -la
+        run: ls -la eventease-app/eventease-app
 
       - name: dotnet publish
-        run: dotnet publish eventease-app/eventease-app/eventease-app.csproj -c Release -o ./myapp
+        run: |
+          dotnet publish eventease-app/eventease-app/eventease-app.csproj -c Release -o ./myapp
+          echo "Publish completed"
+          ls -la ./myapp
 
       - name: Check directory structure after publish
         run: ls -la ./myapp
@@ -61,14 +64,16 @@ jobs:
           name: .net-app
 
       - name: Verify downloaded artifact
-        run: ls -la ./myapp
+        run: |
+          echo "Contents of downloaded artifact:"
+          ls -la ./myapp
 
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_28B328256AF642EBA46FED052D0D8CC3 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2FFB6A8DFEC34EFDA088D636F568B3BD }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B0B492704ED24DE4ADD295C49FECC279 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
