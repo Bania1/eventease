@@ -27,13 +27,13 @@ jobs:
         run: dotnet build --configuration Release eventease-app/eventease-app/eventease-app.csproj
 
       - name: dotnet publish
-        run: dotnet publish eventease-app/eventease-app/eventease-app.csproj -c Release -o ./myapp
+        run: dotnet publish eventease-app/eventease-app/eventease-app.csproj -c Release -o ./publish_output
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./myapp
+          path: ./publish_output
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,4 +64,4 @@ jobs:
         with:
           app-name: 'eventease-app'
           slot-name: 'Production'
-          package: ./myapp
+          package: ./publish_output # Ensure this matches the publish output directory
