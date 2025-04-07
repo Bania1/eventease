@@ -26,8 +26,14 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release eventease-app/eventease-app/eventease-app.csproj
 
+      - name: Check directory structure before publish
+        run: ls -la
+
       - name: dotnet publish
         run: dotnet publish eventease-app/eventease-app/eventease-app.csproj -c Release -o ./myapp
+
+      - name: Check directory structure after publish
+        run: ls -la ./myapp
 
       - name: Verify publish output
         run: ls -la ./myapp
