@@ -7679,11 +7679,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\eventease-app.csproj",
+      "projectUniqueName": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\eventease-app.csproj",
       "projectName": "eventease-app",
-      "projectPath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\eventease-app.csproj",
+      "projectPath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\eventease-app.csproj",
       "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\obj\\",
+      "outputPath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
