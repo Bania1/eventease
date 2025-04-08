@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\views\\about\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\about\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\models\\eventeasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\models\\eventeasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\web applications design\\eventease-app\\eventease-app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,72 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "eventease-app\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "eventease-app\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAABuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-24T18:41:56.516Z",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "eventease-app\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "eventease-app\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T22:55:33.05Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Views\\About\\Index.cshtml",
-              "RelativeDocumentMoniker": "eventease-app\\Views\\About\\Index.cshtml",
-              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Views\\About\\Index.cshtml",
-              "RelativeToolTip": "eventease-app\\Views\\About\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-24T18:39:20.59Z",
-              "EditorCaption": ""
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Program.cs",
+              "RelativeDocumentMoniker": "eventease-app\\Program.cs",
+              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Program.cs",
+              "RelativeToolTip": "eventease-app\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T21:47:17.111Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AboutController.cs",
-              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Controllers\\AboutController.cs",
-              "RelativeDocumentMoniker": "eventease-app\\Controllers\\AboutController.cs",
-              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Controllers\\AboutController.cs",
-              "RelativeToolTip": "eventease-app\\Controllers\\AboutController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAtAAAAAAAAAA==",
+              "Title": "eventeaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Models\\eventeaseContext.cs",
+              "RelativeDocumentMoniker": "eventease-app\\Models\\eventeaseContext.cs",
+              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Models\\eventeaseContext.cs",
+              "RelativeToolTip": "eventease-app\\Models\\eventeaseContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T18:36:41.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "eventease-app\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "eventease-app\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-24T17:54:12.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "eventease-app\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "eventease-app\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAgwBEAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T17:50:42.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T19:59:07.046Z"
             }
           ]
         }
