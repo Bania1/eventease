@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\eventease-app.props" />
-</Project>

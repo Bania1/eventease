@@ -1,4 +1,4 @@
-﻿@{
+﻿@* @{
     ViewData["Title"] = "EventEase - Home Page";
 }
 
@@ -6,4 +6,59 @@
     <h1 class="display-4">Welcome to EventEase</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>Current Date and Time: @ViewBag.CurrentTime</p>
-</div>
+</div> *@
+
+@{
+    // Title that appears in the <title> element via _Layout.cshtml
+    ViewData["Title"] = "Home";
+}
+
+<!-- ---------- HERO SECTION ---------- -->
+<section class="hero vh-100 d-flex align-items-center mt-5"
+         style="
+            position:relative;
+            background:url('@Url.Content("~/img/hero-index.png")') no-repeat center center/cover;">
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:0;"></div>
+
+    <div class="container text-center position-relative z-1">
+        <h1 class="display-4 mb-4 animate-slideup">Discover Extraordinary Events</h1>
+
+        <div class="search-bar mx-auto animate-fadein" style="max-width:500px">
+            <input type="text" class="form-control" placeholder="Search events..." />
+        </div>
+
+        <div class="mt-4">
+            <a asp-controller="Events" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="fas fa-ticket-alt me-2"></i>Browse Events
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ----------  FEATURED EVENTS  ---------- -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-5 text-center">Featured Events</h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="event-card">
+                    <img src="~/img/techno_festival.png"
+                         class="card-img-top"
+                         alt="Electronic Festival">
+                    <div class="card-body bg-spacegrey">
+                        <h5>Electronic Festival</h5>
+                        <p class="text-muted">March&nbsp;25,&nbsp;2025</p>
+                        <button class="btn btn-primary w-100">Get Tickets</button>
+                    </div>
+                </div>
+            </div>
+            <!-- More event cards … -->
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <!-- page-specific JS can go here if you need it later -->
+}
