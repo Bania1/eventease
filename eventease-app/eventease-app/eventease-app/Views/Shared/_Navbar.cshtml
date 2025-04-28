@@ -1,0 +1,41 @@
+﻿@* /Views/Shared/_Navbar.cshtml *@
+<nav class="navbar navbar-expand-lg bg-spacegrey py-3 fixed-top">
+    <div class="container">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+            EVENT<span class="text-primary">EASE</span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Events" asp-action="Index">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                </li>
+                <li class="nav-item ms-2">
+                    <a class="btn btn-outline-light"
+                       asp-controller="Account" asp-action="Register">
+                        <i class="fas fa-user-plus me-2"></i>Sign Up
+                    </a>
+                </li>
+                <li class="nav-item ms-2">
+                    <button class="btn btn-outline-light" id="themeToggle">
+                        <i class="fas fa-adjust"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,307 @@
+:root {
+    /* Dark theme variables */
+    --primary-black: #0a0a0a;
+    --space-grey: #342e2e;
+    --accent-white: #f5f5f5;
+    --hover-grey: #2d2d2d;
+    --text-color: #e0e0e0;
+  }
+  
+  /* The default dark background & text come from our variables */
+body {
+    background-color: var(--primary-black);
+    color: var(--text-color);
+
+    background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2d2d2d, #3a3a3a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+  
+  /* Replaces .bg-dark usage with .bg-spacegrey for containers, navbars, etc. */
+.bg-spacegrey {
+    background-color: var(--space-grey);
+}
+  
+/* Slide-up & other animations */
+@keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+  
+.animate-slideup {
+    animation: slideUp 1s ease-out;
+}
+  
+@keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+}
+  
+@keyframes gradient {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+}
+  
+/* Cards */
+.card,
+.event-card {
+    background-color: var(--space-grey);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.card:hover,
+.event-card:hover,
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+  
+/* Card text color uses our accent & text-color variables */
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.event-card h5,
+.event-card p,
+.event-card .text-muted {
+    color: var(--accent-white);
+}
+  
+.card p,
+.card ul,
+.card li {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+  
+/* Form controls: rely on our dark BG & white text by default. */
+.form-control {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid var(--space-grey);
+    transition: all 0.3s ease;
+}
+  
+/* On focus: white BG, dark text */
+.form-control:focus {
+    background-color: #fff !important;
+    color: #1a1a1a !important;
+    border-color: var(--accent-white);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+  
+/* Placeholder styling */
+.form-control::placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+  
+.form-control:focus::placeholder {
+    color: #666 !important;
+}
+  
+/* Label text color uses accent-white by default. */
+.form-label {
+    color: var(--accent-white);
+}
+  
+/* Buttons */
+.btn-primary,
+.btn-outline-light {
+    color: var(--accent-white);
+    transition: all 0.3s ease;
+}
+  
+.btn-primary {
+    background-color: #007bff;
+}
+  
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+/* Footer styling */
+.footer {
+    background-color: var(--space-grey);
+    color: var(--accent-white);
+    padding: 20px 0;
+    text-align: center;
+}
+  
+.footer h5,
+.footer h6 {
+    color: var(--accent-white);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+  
+.footer p,
+.footer small {
+    color: var(--accent-white);
+    font-size: 0.9rem;
+}
+  
+.footer a {
+    color: var(--accent-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+  
+.footer a:hover {
+    color: #007bff;
+}
+  
+.footer .social-links a {
+    color: var(--accent-white);
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+  
+.footer .social-links a:hover {
+    color: #007bff;
+}
+  
+/* .text-muted is lighter grey on dark BG */
+.text-muted {
+    color: #b3b3b3 !important;
+}
+  
+/* If a .form-check-label is in .bg-spacegrey .card-body, ensure it's visible */
+.bg-spacegrey .card-body .form-check-label {
+    color: #fff !important;
+}
+
+/* Restrict event detail image size */
+.event-detail img {
+  max-width: 80%; /* Limits width to 80% of its container */
+  height: auto; /* Keeps aspect ratio */
+  display: block; /* Ensures proper spacing */
+  margin: 0 auto; /* Centers the image */
+  border-radius: 10px; /* Adds slight rounded corners */
+}
+
+/* Ensure responsiveness on smaller screens */
+@media (max-width: 768px) {
+  .event-detail img {
+      max-width: 100%; /* Full width on small screens */
+  }
+}
+
+
+
+/* ===========================================================
+        DARK MODE OVERRIDES
+=========================================================== */
+
+/* 1) Make navbar text/link color brighter in dark mode */
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #ccc !important;  /* or a brighter shade you prefer, e.g. #ddd or #f0f0f0 */
+}
+
+.navbar .nav-link:hover {
+  color: #fff !important;  /* On hover, fully white text */
+}
+
+/* 2) Give form controls a more visible border in dark mode */
+.form-control {
+    background-color: #1a1a1a; /* already your dark grey */
+    color: #fff;
+    border: 1px solid #444 !important; /* make border a bit lighter than spacegrey */
+    /* You can also add a small box-shadow if you like: */
+    /* box-shadow: 0 0 2px rgba(255, 255, 255, 0.1); */
+}
+
+/* Optionally, make the form-control's border color slightly lighter on focus */
+.form-control:focus {
+    border-color: #bbb !important; /* lighter border to stand out */
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+  }
+
+/* Ensure price text is visible in dark mode */
+.card .h4, .event-card .h4, .event-card span {
+  color: var(--accent-white) !important;
+}
+  
+/* ===========================================================
+    LIGHT MODE OVERRIDES
+    =========================================================== */
+:root.light-mode {
+    /* Lighter color variables for bright UI */
+    --primary-black: #cec4c4;
+    --space-grey: #c4bebe;
+    --accent-white: #1a1a1a;
+    --hover-grey: #cccccc;
+    --text-color: #000000;
+}
+  
+/* Optionally override background gradient for light mode */
+:root.light-mode body {
+    background: linear-gradient(-45deg, #ffffff, #f0f0f0, #e0e0e0, #cccccc) !important;
+}
+  
+/* In light mode, make navbar text darker and checkbox labels visible */
+:root.light-mode .navbar .nav-link,
+:root.light-mode .navbar .navbar-brand {
+  color: #1a1a1a !important; /* Dark text for bright navbar */
+}
+
+:root.light-mode .bg-spacegrey .card-body .form-check-label {
+  color: #1a1a1a !important; /* Ensure checkbox labels are dark in light mode */
+}
+
+/* Make .text-muted darker in light mode */
+:root.light-mode .text-muted {
+    color: #444 !important; /* or #333, #555—whatever is clearly visible on light bg */
+  }
+  
+/* 1) Make checkboxes stand out more in light mode */
+:root.light-mode .form-check-input {
+  /* Darker border for the checkbox/radio */
+  border: 1px solid #555 !important;
+  background-color: #fff !important; /* or #f0f0f0, etc. */
+}
+
+/* If you want the ‘checked’ color to be your brand color or darker: */
+:root.light-mode .form-check-input:checked {
+  background-color: #0d6efd !important; /* Bootstrap primary or another color */
+  border-color: #0d6efd !important;
+}
+
+/* 2) Add a visible border to .card / .event-card in light mode */
+:root.light-mode .card,
+:root.light-mode .event-card {
+  border: 1px solid #ccc !important; /* A light grey border in bright mode */
+}
+
+/* Make card borders more visible in light mode */
+:root.light-mode .card,
+:root.light-mode .event-card {
+  border: 1px solid #ccc !important; /* or #bbb or #aaa, whichever you prefer */
+}
+
+/* Lighten the date input in light mode */
+:root.light-mode input[type="date"] {
+  background-color: #fff !important; /* White background instead of dark */
+  color: #1a1a1a !important;         /* Dark text */
+  border: 1px solid #ccc !important; /* Slightly visible border */
+}
