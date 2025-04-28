@@ -53,16 +53,20 @@ namespace eventease_app.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Email,PasswordHash,Role,Approved,CreatedAt,UpdatedAt")] User user)
+        public async Task<IActionResult> Create([Bind("Email,PasswordHash,Role,Approved")] User user)
         {
             if (ModelState.IsValid)
             {
+                user.CreatedAt = DateTime.UtcNow;
+                user.UpdatedAt = DateTime.UtcNow;
+
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
+
 
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
