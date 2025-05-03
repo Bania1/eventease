@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using eventease_app.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using eventease_app.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace eventease_app.Controllers
 {
@@ -27,17 +24,10 @@ namespace eventease_app.Controllers
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null) return NotFound();
 
             return View(user);
         }
@@ -49,14 +39,15 @@ namespace eventease_app.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Email,PasswordHash,Role,Approved")] User user)
         {
             if (ModelState.IsValid)
             {
+                // ✅ Hash the password before saving
+                user.PasswordHash = HashPassword(user.PasswordHash);
+
                 user.CreatedAt = DateTime.UtcNow;
                 user.UpdatedAt = DateTime.UtcNow;
 
@@ -67,72 +58,63 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            if (user == null) return NotFound();
+
             return View(user);
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Email,PasswordHash,Role,Approved,CreatedAt,UpdatedAt")] User user)
         {
-            if (id != user.Id)
-            {
-                return NotFound();
-            }
+            if (id != user.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
+                    var existingUser = await _context.Users.FindAsync(id);
+                    if (existingUser != null)
+                    {
+                        existingUser.Role = user.Role;
+                        existingUser.Approved = user.Approved;
+                        existingUser.UpdatedAt = DateTime.UtcNow;
+
+                        // ✅ If a new password was entered, hash and save it
+                        if (!string.IsNullOrEmpty(user.PasswordHash))
+                        {
+                            existingUser.PasswordHash = HashPassword(user.PasswordHash);
+                        }
+
+                        _context.Update(existingUser);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    if (!UserExists(user.Id)) return NotFound();
+                    else throw;
                 }
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
+
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null) return NotFound();
 
             return View(user);
         }
@@ -155,6 +137,15 @@ namespace eventease_app.Controllers
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
+        }
+
+        // ✅ Helper method to hash passwords
+        private string HashPassword(string password)
+        {
+            using var sha = SHA256.Create();
+            var bytes = Encoding.UTF8.GetBytes(password);
+            var hash = sha.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
     }
 }

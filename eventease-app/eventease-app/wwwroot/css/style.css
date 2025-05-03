@@ -305,3 +305,12 @@ body {
   color: #1a1a1a !important;         /* Dark text */
   border: 1px solid #ccc !important; /* Slightly visible border */
 }
+
+    :root.light-mode .navbar {
+        background-color: #f8f9fa !important;
+    }
+
+        :root.light-mode .navbar .nav-link,
+        :root.light-mode .navbar .navbar-brand {
+            color: #1a1a1a !important;
+        }

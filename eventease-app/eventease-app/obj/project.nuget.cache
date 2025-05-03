@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GBxoktAztOs=",
+  "dgSpecHash": "TUa/xLbSCDI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Web Applications Design\\eventease-app\\eventease-app\\eventease-app.csproj",
+  "projectFilePath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\eventease-app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\angel\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\angel\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
