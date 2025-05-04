@@ -2,6 +2,7 @@ using eventease_app.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using eventease_app.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Auth/Login";
         options.LogoutPath = "/Auth/Logout";
     });
+
+// ? Register authorization
+builder.Services.AddScoped<IPasswordHasherService, PasswordHasherService>();
+
 
 // ? Register IHttpContextAccessor so Razor views like _LoginPartial.cshtml can access user info
 builder.Services.AddHttpContextAccessor();
