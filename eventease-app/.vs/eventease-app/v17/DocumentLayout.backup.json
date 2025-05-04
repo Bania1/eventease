@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\admin\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\admin\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\auth\\resetmypassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\auth\\resetmypassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -27,8 +19,16 @@
       "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\admin\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\admin\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\admin\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\auth\\resetmypassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\auth\\resetmypassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|solutionrelative:eventease-app\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{213D1EE5-27BE-4994-A0AD-650A8CD855A1}|eventease-app\\eventease-app.csproj|c:\\users\\angel\\documents\\uco\\erasmus\\subjects\\software engineering\\eventease\\eventease-app\\eventease-app\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -58,11 +58,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Users.cshtml",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Views\\Admin\\Users.cshtml",
               "RelativeDocumentMoniker": "eventease-app\\Views\\Admin\\Users.cshtml",
@@ -70,11 +70,12 @@
               "RelativeToolTip": "eventease-app\\Views\\Admin\\Users.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-29T08:14:59.927Z"
+              "WhenOpened": "2025-04-29T08:14:59.927Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Views\\Admin\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "eventease-app\\Views\\Admin\\ResetPassword.cshtml",
@@ -82,19 +83,21 @@
               "RelativeToolTip": "eventease-app\\Views\\Admin\\ResetPassword.cshtml",
               "ViewState": "AgIAAAUAAAAAAAAAAAAgwB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-29T08:14:27.984Z"
+              "WhenOpened": "2025-04-29T08:14:27.984Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "eventease-app\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Controllers\\AdminController.cs",
               "RelativeToolTip": "eventease-app\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAuwI8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T08:13:28.721Z"
+              "WhenOpened": "2025-04-29T08:13:28.721Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -146,7 +149,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "EditUser.cshtml",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Views\\Admin\\EditUser.cshtml",
               "RelativeDocumentMoniker": "eventease-app\\Views\\Admin\\EditUser.cshtml",
@@ -159,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "eventease-app\\Controllers\\AuthController.cs",
@@ -167,11 +170,12 @@
               "RelativeToolTip": "eventease-app\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAIEAAAAAAAAAAAAkwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T08:16:21.281Z"
+              "WhenOpened": "2025-04-29T08:16:21.281Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ResetMyPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Views\\Auth\\ResetMyPassword.cshtml",
               "RelativeDocumentMoniker": "eventease-app\\Views\\Auth\\ResetMyPassword.cshtml",
@@ -183,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\angel\\Documents\\UCO\\Erasmus\\Subjects\\Software Engineering\\eventease\\eventease-app\\eventease-app\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "eventease-app\\Views\\Shared\\_LoginPartial.cshtml",
