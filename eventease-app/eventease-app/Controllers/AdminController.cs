@@ -133,5 +133,16 @@ namespace eventease_app.Controllers
             TempData["ErrorMessage"] = "Password cannot be empty.";
             return View(user);
         }
+
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> Dashboard()
+        {
+            ViewBag.UserCount = await _context.Users.CountAsync();
+            ViewBag.PendingOrganizersCount = await _context.Users.CountAsync(u => u.Role == "organizer" && !u.Approved);
+            ViewBag.PublishedEventsCount = await _context.Events.CountAsync(e => e.IsPublished);
+            ViewBag.TransactionsCount = await _context.Transactions.CountAsync();
+
+            return View();
+        }
     }
 }
