@@ -1,27 +1,26 @@
 ﻿using eventease_app.Models;
+using eventease_app.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace eventease_app.Controllers
 {
     public class UsersController : Controller
     {
         private readonly EventEaseContext _context;
+        private readonly IPasswordHasherService _hasher;
 
-        public UsersController(EventEaseContext context)
+        public UsersController(EventEaseContext context, IPasswordHasherService hasher)
         {
             _context = context;
+            _hasher = hasher;
         }
 
-        // GET: Users
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users.ToListAsync());
         }
 
-        // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -32,22 +31,18 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Email,PasswordHash,Role,Approved")] User user)
         {
             if (ModelState.IsValid)
             {
-                // ✅ Hash the password before saving
-                user.PasswordHash = HashPassword(user.PasswordHash);
-
+                user.PasswordHash = _hasher.HashPassword(user.PasswordHash);
                 user.CreatedAt = DateTime.UtcNow;
                 user.UpdatedAt = DateTime.UtcNow;
 
@@ -58,7 +53,6 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-        // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -69,7 +63,6 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Email,PasswordHash,Role,Approved,CreatedAt,UpdatedAt")] User user)
@@ -87,10 +80,9 @@ namespace eventease_app.Controllers
                         existingUser.Approved = user.Approved;
                         existingUser.UpdatedAt = DateTime.UtcNow;
 
-                        // ✅ If a new password was entered, hash and save it
                         if (!string.IsNullOrEmpty(user.PasswordHash))
                         {
-                            existingUser.PasswordHash = HashPassword(user.PasswordHash);
+                            existingUser.PasswordHash = _hasher.HashPassword(user.PasswordHash);
                         }
 
                         _context.Update(existingUser);
@@ -107,8 +99,6 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-
-        // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -119,7 +109,6 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -137,15 +126,6 @@ namespace eventease_app.Controllers
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
-        }
-
-        // ✅ Helper method to hash passwords
-        private string HashPassword(string password)
-        {
-            using var sha = SHA256.Create();
-            var bytes = Encoding.UTF8.GetBytes(password);
-            var hash = sha.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eventease_app.Models;
+using eventease_app.Services;
 
 namespace eventease_app.Controllers
 {
@@ -9,13 +10,14 @@ namespace eventease_app.Controllers
     public class AdminController : Controller
     {
         private readonly EventEaseContext _context;
+        private readonly IPasswordHasherService _hasher;
 
-        public AdminController(EventEaseContext context)
+        public AdminController(EventEaseContext context, IPasswordHasherService hasher)
         {
             _context = context;
+            _hasher = hasher;
         }
 
-        // View Pending Organizers
         public async Task<IActionResult> PendingOrganizers()
         {
             var pendingOrganizers = await _context.Users
@@ -26,7 +28,6 @@ namespace eventease_app.Controllers
             return View(pendingOrganizers);
         }
 
-        // Approve Organizer
         [HttpPost]
         public async Task<IActionResult> ApproveOrganizer(int id)
         {
@@ -42,14 +43,12 @@ namespace eventease_app.Controllers
             return RedirectToAction(nameof(PendingOrganizers));
         }
 
-        // 🔥 View All Users
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.OrderBy(u => u.CreatedAt).ToListAsync();
             return View(users);
         }
 
-        // 🔥 Edit User Role
         public async Task<IActionResult> EditUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -74,6 +73,11 @@ namespace eventease_app.Controllers
                         existingUser.Approved = user.Approved;
                         existingUser.UpdatedAt = DateTime.UtcNow;
 
+                        if (!string.IsNullOrEmpty(user.PasswordHash))
+                        {
+                            existingUser.PasswordHash = _hasher.HashPassword(user.PasswordHash);
+                        }
+
                         _context.Update(existingUser);
                         await _context.SaveChangesAsync();
                     }
@@ -88,7 +92,6 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-        // 🔥 Delete User
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -99,7 +102,6 @@ namespace eventease_app.Controllers
             return RedirectToAction(nameof(Users));
         }
 
-        // GET: Admin/ResetPassword/5
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> ResetPassword(int id)
         {
@@ -109,7 +111,6 @@ namespace eventease_app.Controllers
             return View(user);
         }
 
-        // POST: Admin/ResetPassword/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
@@ -120,7 +121,7 @@ namespace eventease_app.Controllers
 
             if (!string.IsNullOrEmpty(newPassword))
             {
-                user.PasswordHash = HashPassword(newPassword);
+                user.PasswordHash = _hasher.HashPassword(newPassword);
                 user.UpdatedAt = DateTime.UtcNow;
                 _context.Update(user);
                 await _context.SaveChangesAsync();
@@ -132,15 +133,5 @@ namespace eventease_app.Controllers
             TempData["ErrorMessage"] = "Password cannot be empty.";
             return View(user);
         }
-
-        // Helper function
-        private string HashPassword(string password)
-        {
-            using var sha = System.Security.Cryptography.SHA256.Create();
-            var bytes = System.Text.Encoding.UTF8.GetBytes(password);
-            var hash = sha.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
-        }
-
     }
 }

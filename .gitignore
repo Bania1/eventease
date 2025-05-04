@@ -1,0 +1,61 @@
+## Ignore build outputs
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## VS Code settings
+.vscode/
+.vscode/*
+
+## Visual Studio folder (solution-specific cache)
+.vs/
+eventease-app/.vs/
+
+## ASP.NET Scaffolding cache
+ScaffoldingReadMe.txt
+
+## Rider
+.idea/
+*.sln.iml
+
+## Logs
+*.log
+
+## NPM packages (if applicable)
+node_modules/
+
+## Environment & config
+.env
+*.secret
+*.key
+*.pfx
+*.crt
+*.pem
+
+## Publish artifacts
+*.publish.xml
+*.publishproj
+
+## Other temp files
+*.tmp
+*.bak
+*.old
+
+## Database local dev
+*.mdf
+*.ldf
+
+## Backup files
+*.orig
+*.swp
+
+## OS-specific
+.DS_Store
+Thumbs.db
+ehthumbs.db
