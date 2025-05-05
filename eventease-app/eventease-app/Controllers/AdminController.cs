@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eventease_app.Models;
 using eventease_app.Services;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
+using X.PagedList.Extensions;
+
 
 namespace eventease_app.Controllers
 {
@@ -46,17 +50,28 @@ namespace eventease_app.Controllers
             return RedirectToAction(nameof(PendingOrganizers));
         }
 
-
-
-
-
-
-
-        public async Task<IActionResult> Users()
+        /// GET: /Admin/Users
+        [Authorize(Roles = "admin")]
+        public IActionResult Users(string? email, string? role, string? approved, DateTime? registered, int page = 1)
         {
-            var users = await _context.Users.OrderBy(u => u.CreatedAt).ToListAsync();
-            return View(users);
+            var query = _context.Users.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(email))
+                query = query.Where(u => u.Email.Contains(email));
+
+            if (!string.IsNullOrWhiteSpace(role))
+                query = query.Where(u => u.Role == role);
+
+            if (!string.IsNullOrWhiteSpace(approved))
+                query = query.Where(u => u.Approved == (approved == "true"));
+
+            if (registered.HasValue)
+                query = query.Where(u => u.CreatedAt.Date == registered.Value.Date);
+
+            var pagedUsers = query.OrderBy(u => u.Email).ToPagedList(page, 5); // 5 users per page
+            return View(pagedUsers);
         }
+
 
         public async Task<IActionResult> EditUser(int id)
         {
