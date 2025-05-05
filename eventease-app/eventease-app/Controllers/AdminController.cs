@@ -29,19 +29,28 @@ namespace eventease_app.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ApproveOrganizer(int id)
         {
             var user = await _context.Users.FindAsync(id);
-            if (user != null && user.Role == "organizer")
-            {
-                user.Approved = true;
-                user.UpdatedAt = DateTime.UtcNow;
-                _context.Update(user);
-                await _context.SaveChangesAsync();
-            }
+            if (user == null || user.Role.ToLower() != "organizer")
+                return NotFound();
+
+            user.Approved = true;
+            user.UpdatedAt = DateTime.UtcNow;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"Organizer '{user.Email}' approved successfully!";
 
             return RedirectToAction(nameof(PendingOrganizers));
         }
+
+
+
+
+
+
 
         public async Task<IActionResult> Users()
         {
@@ -58,38 +67,32 @@ namespace eventease_app.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUser(int id, User user)
+        public async Task<IActionResult> EditUser(int id, User formUser)
         {
-            if (id != user.Id) return NotFound();
+            if (id != formUser.Id)
+                return NotFound();
 
-            if (ModelState.IsValid)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return View(user); // return full model, not formUser
+
+            // Update fields
+            user.Role = formUser.Role;
+            user.Approved = formUser.Approved;
+            user.UpdatedAt = DateTime.UtcNow;
+
+            if (!string.IsNullOrWhiteSpace(formUser.NewPassword))
             {
-                try
-                {
-                    var existingUser = await _context.Users.FindAsync(id);
-                    if (existingUser != null)
-                    {
-                        existingUser.Role = user.Role;
-                        existingUser.Approved = user.Approved;
-                        existingUser.UpdatedAt = DateTime.UtcNow;
-
-                        if (!string.IsNullOrEmpty(user.PasswordHash))
-                        {
-                            existingUser.PasswordHash = _hasher.HashPassword(user.PasswordHash);
-                        }
-
-                        _context.Update(existingUser);
-                        await _context.SaveChangesAsync();
-                    }
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    throw;
-                }
-                return RedirectToAction(nameof(Users));
+                user.PasswordHash = _hasher.HashPassword(formUser.NewPassword);
             }
 
-            return View(user);
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Users));
         }
 
         public async Task<IActionResult> DeleteUser(int id)

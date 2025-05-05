@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace eventease_app.Models
 {
@@ -28,5 +30,9 @@ namespace eventease_app.Models
         public ICollection<Guest>? Guests { get; set; }          // If a user is a guest for events
         public ICollection<Ticket>? Tickets { get; set; }        // If a user has tickets
         public ICollection<Transaction>? Transactions { get; set; }
+
+        [NotMapped]
+        [Display(Name = "New Password")]
+        public string? NewPassword { get; set; }
     }
 }
