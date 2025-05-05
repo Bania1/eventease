@@ -57,7 +57,8 @@ namespace eventease_app.Controllers
                 var organizer = _context.Users.FirstOrDefault(u => u.Id == userId);
 
                 if (organizer == null || !organizer.Approved)
-                    return RedirectToAction("AccessDenied", "Home");
+                    return RedirectToAction("CannotCreate");
+
             }
 
             ViewData["OrganizerId"] = new SelectList(_context.Users.Where(u => u.Role == "organizer"), "Id", "Email");
@@ -157,6 +158,12 @@ namespace eventease_app.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [AllowAnonymous]
+        public IActionResult CannotCreate()
+        {
+            return View();
         }
 
         private bool EventExists(int id)
