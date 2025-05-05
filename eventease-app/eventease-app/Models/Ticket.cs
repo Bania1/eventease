@@ -19,6 +19,7 @@ namespace eventease_app.Models
         // e.g. a unique code scanned at the event
         [Required]
         public string QrCode { get; set; } = default!;
+        
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

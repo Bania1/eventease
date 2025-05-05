@@ -285,6 +285,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {
+      "Id": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png",
+      "PackagePath": "staticwebassets\\qr-codes\\7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png"
+    },
+    {
+      "Id": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png",
+      "PackagePath": "staticwebassets\\qr-codes\\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.eventease-app.props",
       "PackagePath": "build\\eventease-app.props"
     },

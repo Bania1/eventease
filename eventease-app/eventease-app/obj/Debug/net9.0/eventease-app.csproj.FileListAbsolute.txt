@@ -1026,3 +1026,9 @@ D:\SE\eventease\eventease-app\eventease-app\obj\Debug\net9.0\refint\eventease-ap
 D:\SE\eventease\eventease-app\eventease-app\obj\Debug\net9.0\eventease-app.pdb
 D:\SE\eventease\eventease-app\eventease-app\obj\Debug\net9.0\eventease-app.genruntimeconfig.cache
 D:\SE\eventease\eventease-app\eventease-app\obj\Debug\net9.0\ref\eventease-app.dll
+D:\SE\eventease\eventease-app\eventease-app\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+D:\SE\eventease\eventease-app\eventease-app\bin\Debug\net9.0\QRCoder.dll
+D:\SE\eventease\eventease-app\eventease-app\bin\Debug\net9.0\System.Drawing.Common.dll
+D:\SE\eventease\eventease-app\eventease-app\bin\Debug\net9.0\System.Private.Windows.Core.dll
+D:\SE\eventease\eventease-app\eventease-app\bin\Debug\net9.0\runtimes\win\lib\net9.0\Microsoft.Win32.SystemEvents.dll
+D:\SE\eventease\eventease-app\eventease-app\bin\Debug\net9.0\Microsoft.AspNet.Identity.Core.dll

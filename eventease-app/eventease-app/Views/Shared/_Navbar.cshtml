@@ -1,45 +1,44 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
-            EVENT<span class="text-primary">EASE</span>
-        </a>
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <a class="navbar-brand" asp-controller="Home" asp-action="Index">EventEase</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Events" asp-action="Index">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
-                </li>
-
-                <!-- Light/Dark Mode Toggle Button -->
-                <li class="nav-item">
-                    <button id="themeToggle" class="btn btn-outline-light btn-sm ms-3" type="button">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </li>
-
-                <!-- Sign Up Button -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Events" asp-action="Index">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
+            </li>
+              @if (User.Identity.IsAuthenticated)
+            {
                 <li class="nav-item ms-2">
-                    <a asp-controller="Auth" asp-action="Register" class="btn btn-outline-light btn-sm">
-                        <i class="fas fa-user-plus me-1"></i> Sign Up
-                    </a>
+                    <a class="nav-link" asp-controller="Tickets" asp-action="MyTickets">My Tickets</a>
                 </li>
+            }
+        </ul>
 
-                <!-- Dynamic Login/Logout and Admin Manage Button -->
-                <li class="nav-item ms-2">
-                    @await Html.PartialAsync("_LoginPartial")
-                </li>
-            </ul>
-        </div>
+        <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+                <button id="themeToggle" class="btn btn-outline-light btn-sm me-2" type="button">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="Auth" asp-action="Register" class="btn btn-outline-light btn-sm me-2">
+                    <i class="fas fa-user-plus me-1"></i> Sign Up
+                </a>
+            </li>
+            <li class="nav-item">
+                @await Html.PartialAsync("_LoginPartial")
+            </li>
+           
+        </ul>
     </div>
 </nav>

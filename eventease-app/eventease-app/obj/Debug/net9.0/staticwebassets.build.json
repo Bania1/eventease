@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ngIs5YNUt1/g8fy3sGzQFvXXWUDsDkcawgUhD6jQub8=",
+  "Hash": "MHTRC31AHjYmjBD3BFs/WF/xJtvATVO+elTAxw6hVs0=",
   "Source": "eventease-app",
   "BasePath": "_content/eventease-app",
   "Mode": "Default",
@@ -2913,6 +2913,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png",
+      "SourceId": "eventease-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\",
+      "BasePath": "_content/eventease-app",
+      "RelativePath": "qr-codes/7028fe8f-ff04-4e39-9722-e376aa5fb9b9#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cllukla45d",
+      "Integrity": "0HB+mVUFKyVKbH1gmUvFdZy9/rwT964ey4AkujvmXZI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\qr-codes\\7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png"
+    },
+    {
+      "Identity": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png",
+      "SourceId": "eventease-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\",
+      "BasePath": "_content/eventease-app",
+      "RelativePath": "qr-codes/7e6040e1-df10-4bf4-80e5-0cc9eb115685#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dqekwl4web",
+      "Integrity": "lVuALrLcmkJewxPtJmH1zKxW3llW8tSPSXzF5rwhMBw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\qr-codes\\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png"
     }
   ],
   "Endpoints": [
@@ -3537,7 +3579,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3590,7 +3632,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3627,7 +3669,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3674,7 +3716,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3735,7 +3777,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3780,7 +3822,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3835,7 +3877,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3896,7 +3938,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3941,7 +3983,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3996,7 +4038,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4049,7 +4091,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4086,7 +4128,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 19:39:12 GMT"
+          "Value": "Mon, 05 May 2025 22:26:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23073,6 +23115,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-1HkjQSVuV0/ji/X/lGeDTHeagBS0BwopMrHDQuwqgtU="
+        }
+      ]
+    },
+    {
+      "Route": "qr-codes/7028fe8f-ff04-4e39-9722-e376aa5fb9b9.cllukla45d.png",
+      "AssetFile": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "802"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0HB+mVUFKyVKbH1gmUvFdZy9/rwT964ey4AkujvmXZI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 21:29:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cllukla45d"
+        },
+        {
+          "Name": "label",
+          "Value": "qr-codes/7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0HB+mVUFKyVKbH1gmUvFdZy9/rwT964ey4AkujvmXZI="
+        }
+      ]
+    },
+    {
+      "Route": "qr-codes/7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png",
+      "AssetFile": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "802"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0HB+mVUFKyVKbH1gmUvFdZy9/rwT964ey4AkujvmXZI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 21:29:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0HB+mVUFKyVKbH1gmUvFdZy9/rwT964ey4AkujvmXZI="
+        }
+      ]
+    },
+    {
+      "Route": "qr-codes/7e6040e1-df10-4bf4-80e5-0cc9eb115685.dqekwl4web.png",
+      "AssetFile": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "811"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lVuALrLcmkJewxPtJmH1zKxW3llW8tSPSXzF5rwhMBw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 21:35:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dqekwl4web"
+        },
+        {
+          "Name": "label",
+          "Value": "qr-codes/7e6040e1-df10-4bf4-80e5-0cc9eb115685.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lVuALrLcmkJewxPtJmH1zKxW3llW8tSPSXzF5rwhMBw="
+        }
+      ]
+    },
+    {
+      "Route": "qr-codes/7e6040e1-df10-4bf4-80e5-0cc9eb115685.png",
+      "AssetFile": "D:\\SE\\eventease\\eventease-app\\eventease-app\\wwwroot\\qr-codes\\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "811"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lVuALrLcmkJewxPtJmH1zKxW3llW8tSPSXzF5rwhMBw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 21:35:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lVuALrLcmkJewxPtJmH1zKxW3llW8tSPSXzF5rwhMBw="
         }
       ]
     }
