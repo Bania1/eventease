@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eventease-app")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6c9188b9704dcc88ca8fcf78cf890c217ab8874")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e643366f8145fe3d0bd6d12cc9cdd3b749191c5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("eventease-app")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eventease-app")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

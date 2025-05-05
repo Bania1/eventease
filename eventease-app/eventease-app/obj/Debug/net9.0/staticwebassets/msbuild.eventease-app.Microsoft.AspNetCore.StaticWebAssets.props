@@ -1314,5 +1314,41 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\qr-codes\7e6040e1-df10-4bf4-80e5-0cc9eb115685.png'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\qr-codes\c1e5cc9c-5f68-4382-a25d-f2a1ebf95ac1.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>eventease-app</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/eventease-app</BasePath>
+      <RelativePath>qr-codes/c1e5cc9c-5f68-4382-a25d-f2a1ebf95ac1.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>w657v0dlvb</Fingerprint>
+      <Integrity>+Fp25WpWH/X6uYT9JqAPRN0dQcK7CKMixN5vCXM6ZxA=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\qr-codes\c1e5cc9c-5f68-4382-a25d-f2a1ebf95ac1.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\qr-codes\d0da3526-5709-4678-b399-b3b968edd124.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>eventease-app</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/eventease-app</BasePath>
+      <RelativePath>qr-codes/d0da3526-5709-4678-b399-b3b968edd124.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>075tc5xzze</Fingerprint>
+      <Integrity>jE+8ieaOiHw2n6sBccVeUmqjnLfIm2oHT7GGpvZiqKA=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\qr-codes\d0da3526-5709-4678-b399-b3b968edd124.png'))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>
