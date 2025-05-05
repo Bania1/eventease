@@ -22,6 +22,12 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
                 </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item ms-2">
+                        <a class="nav-link" asp-controller="Tickets" asp-action="MyTickets">My Tickets</a>
+                    </li>
+                }
 
                 <!-- Admin Dropdown -->
                 @if (User.Identity.IsAuthenticated)

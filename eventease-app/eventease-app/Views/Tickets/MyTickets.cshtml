@@ -1,0 +1,41 @@
+﻿@model List<eventease_app.Models.Ticket>
+
+@{
+    ViewData["Title"] = "My Tickets";
+}
+
+<h2>My Tickets</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (Model.Count == 0)
+{
+    <p>You have not purchased any tickets yet.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var ticket in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@ticket.Event?.Theme</h5>
+                        <p><strong>Location:</strong> @ticket.Event?.Location</p>
+                        <p><strong>Date:</strong> @ticket.Event?.StartDate.ToString("MMMM dd, yyyy")</p>
+
+                        <img src="~/qr-codes/7028fe8f-ff04-4e39-9722-e376aa5fb9b9.png" alt="Ticket QR Code" style="width: 150px; height: 150px;" />
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
