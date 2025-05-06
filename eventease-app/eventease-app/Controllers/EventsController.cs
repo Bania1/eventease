@@ -48,10 +48,10 @@ namespace eventease_app.Controllers
         }
 
         // GET: Events/Create
-        [Authorize(Roles = "organizer,admin")]
+        [Authorize(Roles = "Organizer,Admin")]
         public IActionResult Create()
         {
-            if (User.IsInRole("organizer"))
+            if (User.IsInRole("Organizer"))
             {
                 var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 var organizer = _context.Users.FirstOrDefault(u => u.Id == userId);
@@ -61,14 +61,14 @@ namespace eventease_app.Controllers
 
             }
 
-            ViewData["OrganizerId"] = new SelectList(_context.Users.Where(u => u.Role == "organizer"), "Id", "Email");
+            ViewData["OrganizerId"] = new SelectList(_context.Users.Where(u => u.Role == "Organizer"), "Id", "Email");
             return View();
         }
 
         // POST: Events/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "organizer,admin")]
+        [Authorize(Roles = "Organizer,Admin")]
         public async Task<IActionResult> Create([Bind("OrganizerId,Theme,Location,Description,LongDescription,Category,ThumbnailFileName,HeroFileName,StartDate,Price,IsPublished")] Event @event)
         {
             if (ModelState.IsValid)
@@ -85,7 +85,7 @@ namespace eventease_app.Controllers
         }
 
         // GET: Events/Edit/5
-        [Authorize(Roles = "organizer,admin")]
+        [Authorize(Roles = "Organizer,Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,7 +102,7 @@ namespace eventease_app.Controllers
         // POST: Events/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "organizer,admin")]
+        [Authorize(Roles = "Organizer,Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,OrganizerId,Theme,Location,Description,LongDescription,Category,ThumbnailFileName,HeroFileName,StartDate,Price,IsPublished,CreatedAt,UpdatedAt")] Event @event)
         {
             if (id != @event.Id)
@@ -130,7 +130,7 @@ namespace eventease_app.Controllers
         }
 
         // GET: Events/Delete/5
-        [Authorize(Roles = "organizer,admin")]
+        [Authorize(Roles = "Organizer,Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,7 +149,7 @@ namespace eventease_app.Controllers
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "organizer,admin")]
+        [Authorize(Roles = "Organizer,Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var @event = await _context.Events.FindAsync(id);
