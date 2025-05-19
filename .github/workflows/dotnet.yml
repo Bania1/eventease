@@ -27,8 +27,7 @@ jobs:
         run: dotnet restore ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
 
       - name: Build Web App
-        run: dotnet build --no-restore --configuration Release \
-          ./eventease-app/eventease-app/eventease-app.csproj
+        run: dotnet build --no-restore --configuration Release ./eventease-app/eventease-app/eventease-app.csproj
 
       - name: Build Tests
         run: dotnet build --no-restore --configuration Release ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
