@@ -10,45 +10,46 @@
     <h4>Transaction</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(m => m.User)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(m => m.User!.Id)   @* null-forgiving on User *@
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Event)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(m => m.Event)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Event.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(m => m.Event!.Id)  @* null-forgiving on Event *@
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Amount)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(m => m.Amount)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Amount)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(m => m.Amount)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaymentMethod)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(m => m.PaymentMethod)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PaymentMethod)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(m => m.PaymentMethod!) @* if PaymentMethod is string? *@
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(m => m.CreatedAt)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(m => m.CreatedAt)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedAt)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(m => m.UpdatedAt)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedAt)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(m => m.UpdatedAt)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <!-- Model itself is non-null, so no need for Model? -->
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
