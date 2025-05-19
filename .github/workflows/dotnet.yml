@@ -20,17 +20,17 @@ jobs:
         with:
           dotnet-version: "9.0.x"
 
-      - name: Restore Web App dependencies
-        run: dotnet restore ./eventease-app/eventease-app/eventease-app.csproj
+      - name: Restore Web App
+        run: dotnet restore ./eventease-app/eventease-app.csproj
 
-      - name: Restore Test project dependencies
-        run: dotnet restore ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
+      - name: Restore Tests
+        run: dotnet restore ./EventEaseApp.Tests/EventEaseApp.Tests.csproj
 
       - name: Build Web App
-        run: dotnet build --no-restore --configuration Release ./eventease-app/eventease-app/eventease-app.csproj
+        run: dotnet build --no-restore --configuration Release ./eventease-app/eventease-app.csproj
 
       - name: Build Tests
-        run: dotnet build --no-restore --configuration Release ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
+        run: dotnet build --no-restore --configuration Release ./EventEaseApp.Tests/EventEaseApp.Tests.csproj
 
       - name: Run Tests
-        run: dotnet test --no-build --verbosity normal ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
+        run: dotnet test --no-build --verbosity normal ./EventEaseApp.Tests/EventEaseApp.Tests.csproj
