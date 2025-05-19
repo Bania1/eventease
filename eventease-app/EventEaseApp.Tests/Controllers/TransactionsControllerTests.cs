@@ -18,6 +18,7 @@ namespace EventEaseApp.Tests.Controllers
     /// Unit tests for TransactionsController, covering both GET and POST Create actions.
     /// </summary>
     [TestClass]
+    [DoNotParallelize]
     public class TransactionsControllerTests
     {
         private EventEaseContext _context = null!;
