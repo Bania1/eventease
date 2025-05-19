@@ -314,3 +314,17 @@ body {
         :root.light-mode .navbar .navbar-brand {
             color: #1a1a1a !important;
         }
+
+/* Price color in dark mode */
+.event-price {
+    color: var(--accent-white) !important;
+}
+
+/* Price color in light mode */
+:root.light-mode .event-price {
+    color: var(--text-color) !important;
+}
+
+.event-price {
+    transition: color 0.3s ease;
+}

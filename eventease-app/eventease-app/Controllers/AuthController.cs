@@ -116,6 +116,42 @@ namespace eventease_app.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        // 1. GET anónimo: mostrar formulario “Forgot Password”
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        // 2. POST anónimo: procesar el reseteo
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(string email, string newPassword)
+        {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(newPassword))
+            {
+                ModelState.AddModelError("", "Email and new password are required.");
+                return View();
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Email == email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "No account with that email.");
+                return View();
+            }
+
+            // Simple reset: actualiza el hash
+            user.PasswordHash = _hasher.HashPassword(newPassword);
+            user.UpdatedAt = DateTime.UtcNow;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Your password has been reset. Please log in.";
+            return RedirectToAction(nameof(Login));
+        }
+
         [Authorize]
         public IActionResult ResetMyPassword()
         {

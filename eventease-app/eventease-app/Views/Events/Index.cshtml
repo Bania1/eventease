@@ -27,7 +27,8 @@
                     <p class="flex-grow-1 small">@ev.Description?.Substring(0, Math.Min(ev.Description.Length, 100))...</p>
 
                     <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="h5">$@ev.Price.ToString("0.00")</span>
+                        <span class="event-price h5">$@ev.Price.ToString("0.00")</span>
+
 
                         <a asp-action="Details" asp-route-id="@ev.Id" class="btn btn-primary btn-sm">
                             <i class="fas fa-ticket-alt"></i> View Details
