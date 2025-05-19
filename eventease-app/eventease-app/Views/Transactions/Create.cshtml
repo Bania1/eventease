@@ -1,0 +1,94 @@
+﻿@model eventease_app.Models.TransactionCreateViewModel
+
+@{
+    ViewData["Title"] = "Event Payment";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="mt-4" novalidate>
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <input asp-for="EventId" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="Amount" class="form-label"></label>
+        <input asp-for="Amount" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PaymentMethod" class="form-label"></label>
+        <select asp-for="PaymentMethod" class="form-select">
+            <option value="">-- Select payment method --</option>
+            <option value="CreditCard">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+        </select>
+        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+    </div>
+
+    <div id="ccFields" style="display:none;">
+        <div class="mb-3">
+            <label asp-for="CardNumber" class="form-label"></label>
+            <input asp-for="CardNumber"
+                   class="form-control"
+                   inputmode="numeric"
+                   maxlength="19" />
+            <span asp-validation-for="CardNumber" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Expiration" class="form-label"></label>
+                <input asp-for="Expiration"
+                       class="form-control"
+                       placeholder="MM/YY"
+                       inputmode="numeric"
+                       maxlength="5" />
+                <span asp-validation-for="Expiration" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label asp-for="Cvv" class="form-label"></label>
+                <input asp-for="Cvv"
+                       class="form-control"
+                       inputmode="numeric"
+                       maxlength="3" />
+                <span asp-validation-for="Cvv" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirm Payment</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pm = document.querySelector('select[name="PaymentMethod"]');
+            const cc = document.getElementById('ccFields');
+
+            function toggle() {
+                cc.style.display = pm.value === 'CreditCard' ? 'block' : 'none';
+            }
+            pm.addEventListener('change', toggle);
+            toggle();
+
+            document.querySelector('input[name="CardNumber"]')
+                ?.addEventListener('input', e => {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 19);
+                });
+
+            document.querySelector('input[name="Expiration"]')
+                ?.addEventListener('input', e => {
+                    let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+                    if (v.length > 2) v = v.slice(0,2) + '/' + v.slice(2);
+                    e.target.value = v;
+                });
+
+            document.querySelector('input[name="Cvv"]')
+                ?.addEventListener('input', e => {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
+                });
+        });
+    </script>
+}
