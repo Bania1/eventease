@@ -1,13 +1,11 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
+# .github/workflows/dotnet.yml
 name: .NET CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -20,16 +18,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: "9.0.x"
 
-      - name: Restore dependencies
-        run: dotnet restore
-        working-directory: ./eventease-app  # Replace with your actual project directory
+      - name: Restore Web App dependencies
+        run: dotnet restore ./eventease-app/eventease-app/eventease-app.csproj
 
-      - name: Build solution
-        run: dotnet build --no-restore --configuration Release
-        working-directory: ./eventease-app  # Replace with your actual project directory
+      - name: Restore Test project dependencies
+        run: dotnet restore ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
 
-      - name: Run tests
-        run: dotnet test --no-build --verbosity normal
-        working-directory: ./eventease-app  # Replace with your actual project directory
+      - name: Build Web App
+        run: dotnet build --no-restore --configuration Release ./eventease-app/eventease-app/eventease-app.csproj
+
+      - name: Build Tests
+        run: dotnet build --no-restore --configuration Release ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj
+
+      - name: Run Tests
+        run: dotnet test --no-build --configuration Release --verbosity normal ./eventease-app/EventEaseApp.Tests/EventEaseApp.Tests.csproj

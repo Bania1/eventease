@@ -1,12 +1,22 @@
 ﻿@using System.Security.Claims
 @{
-    // Si el usuario está autenticado, calculamos userName
-    string userName = null;
-    if (User.Identity.IsAuthenticated)
+    // Si el usuario está autenticado, calculamos userName de forma null-safe
+    string? userName = null;
+
+    if (User?.Identity?.IsAuthenticated == true)
     {
-        var emailClaim = User.FindFirst(ClaimTypes.Email)?.Value
-                         ?? User.Identity.Name;
-        userName = emailClaim.Split('@')[0];
+        // Intentamos leer el email; si no hay, usamos Identity.Name
+        var emailOrName = User.FindFirst(ClaimTypes.Email)?.Value
+                          ?? User.Identity?.Name;
+
+        if (!string.IsNullOrEmpty(emailOrName))
+        {
+            // Extraemos la parte antes de '@' si existe
+            var atPos = emailOrName.IndexOf('@');
+            userName = atPos > 0
+                       ? emailOrName[..atPos]
+                       : emailOrName;
+        }
     }
 }
 
@@ -15,7 +25,11 @@
         <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
             EVENT<span class="text-primary">EASE</span>
         </a>
-        <button class="navbar-toggler" …>…</button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
 
@@ -30,7 +44,7 @@
                 </li>
 
                 @* “My Tickets” solo para usuarios autenticados *@
-                @if (User.Identity.IsAuthenticated)
+                @if (User?.Identity?.IsAuthenticated == true)
                 {
                     <li class="nav-item ms-2">
                         <a class="nav-link" asp-controller="Tickets" asp-action="MyTickets">My Tickets</a>
@@ -38,7 +52,7 @@
                 }
 
                 @* Dropdown Admin *@
-                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("admin"))
                 {
                     <li class="nav-item dropdown ms-2">
                         <a class="nav-link dropdown-toggle text-warning fw-bold"
@@ -55,7 +69,7 @@
                 }
 
                 @* Login/Register o ¡Hola, userName! + Logout *@
-                @if (User.Identity.IsAuthenticated)
+                @if (userName != null)
                 {
                     <li class="nav-item d-flex align-items-center ms-3">
                         <span class="navbar-text text-light me-2">
