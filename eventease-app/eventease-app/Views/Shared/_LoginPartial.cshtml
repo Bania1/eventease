@@ -1,17 +1,29 @@
 ﻿@using System.Security.Claims
 
 @{
-    string userName = null;
-    if (User.Identity.IsAuthenticated)
+    // Start with a nullable userName
+    string? userName = null;
+
+    // Only compute if User and Identity exist and are authenticated
+    if (User?.Identity?.IsAuthenticated == true)
     {
+        // Safely grab the email claim, or fall back to Identity.Name
         var emailClaim = User.FindFirst(ClaimTypes.Email)?.Value
-                         ?? User.Identity.Name;
-        userName = emailClaim.Split('@')[0];
+                         ?? User.Identity?.Name;
+
+        if (!string.IsNullOrEmpty(emailClaim))
+        {
+            // Extract text before the '@'
+            var atPos = emailClaim.IndexOf('@');
+            userName = atPos > 0
+                       ? emailClaim[..atPos]
+                       : emailClaim;
+        }
     }
 }
 
 <ul class="navbar-nav ms-auto">
-    @if (User.Identity.IsAuthenticated)
+    @if (userName != null)
     {
         <li class="nav-item d-flex align-items-center">
             <span class="nav-link">¡Hola, @userName!</span>
