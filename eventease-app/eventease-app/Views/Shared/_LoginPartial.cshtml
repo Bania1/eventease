@@ -1,16 +1,34 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using System.Security.Claims
 
-@if (User.Identity.IsAuthenticated)
-{
-    <form class="form-inline" asp-controller="Auth" asp-action="Logout" method="post">
-        <button type="submit" class="btn btn-outline-light btn-sm ms-2">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-        </button>
-    </form>
+@{
+    string userName = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        var emailClaim = User.FindFirst(ClaimTypes.Email)?.Value
+                         ?? User.Identity.Name;
+        userName = emailClaim.Split('@')[0];
+    }
 }
-else
-{
-    <a asp-controller="Auth" asp-action="Login" class="btn btn-outline-light btn-sm ms-2">
-        <i class="fas fa-sign-in-alt me-1"></i> Login
-    </a>
-}
+
+<ul class="navbar-nav ms-auto">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item d-flex align-items-center">
+            <span class="nav-link">¡Hola, @userName!</span>
+        </li>
+        <li class="nav-item">
+            <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                <button type="submit" class="btn btn-link nav-link">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a asp-controller="Auth" asp-action="Login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Auth" asp-action="Register" class="nav-link">Register</a>
+        </li>
+    }
+</ul>

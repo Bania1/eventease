@@ -1,18 +1,24 @@
 ﻿@using System.Security.Claims
+@{
+    // Si el usuario está autenticado, calculamos userName
+    string userName = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        var emailClaim = User.FindFirst(ClaimTypes.Email)?.Value
+                         ?? User.Identity.Name;
+        userName = emailClaim.Split('@')[0];
+    }
+}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
             EVENT<span class="text-primary">EASE</span>
         </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
+        <button class="navbar-toggler" …>…</button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
+
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
@@ -22,45 +28,67 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
                 </li>
+
+                @* “My Tickets” solo para usuarios autenticados *@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item ms-2">
-                        <a class="nav-link" asp-controller="Tickets" asp-action="MyTickets">My Tickets</a>
+                        <a class="nav-link" asp-controller="Tickets" asp-action="Index">My Tickets</a>
                     </li>
                 }
 
-                <!-- Admin Dropdown -->
-                @if (User.Identity.IsAuthenticated)
+                @* Dropdown Admin *@
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                 {
-                    var role = User.FindFirst(ClaimTypes.Role)?.Value;
-                    if (role == "admin")
-                    {
-                        <li class="nav-item dropdown ms-2">
-                            <a class="nav-link dropdown-toggle text-warning fw-bold" href="#" id="adminDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
-                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
-                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Users">Manage Users</a></li>
-                                <li><a class="dropdown-item" asp-controller="Auth" asp-action="ResetMyPassword">Change
-                                        Password</a></li>
-                            </ul>
-                        </li>
-                    }
+                    <li class="nav-item dropdown ms-2">
+                        <a class="nav-link dropdown-toggle text-warning fw-bold"
+                           href="#" id="adminDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
+                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="Users">Manage Users</a></li>
+                            <li><a class="dropdown-item" asp-controller="Auth" asp-action="ResetMyPassword">Change Password</a></li>
+                        </ul>
+                    </li>
                 }
 
-                <!-- Login/Register or Logout + Partial -->
-                <li class="nav-item ms-2">
-                    @await Html.PartialAsync("_LoginPartial")
-                </li>
+                @* Login/Register o ¡Hola, userName! + Logout *@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item d-flex align-items-center ms-3">
+                        <span class="navbar-text text-light me-2">
+                            ¡Hola, <strong>@userName</strong>!
+                        </span>
+                        <form asp-controller="Auth" asp-action="Logout" method="post">
+                            <button type="submit" class="btn btn-outline-light btn-sm">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-outline-light btn-sm" asp-controller="Auth" asp-action="Login">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-success btn-sm" asp-controller="Auth" asp-action="Register">
+                            Register
+                        </a>
+                    </li>
+                }
 
-                <!-- Light/Dark Mode Toggle Button moved to far right -->
+                @* Toggle Dark/Light *@
                 <li class="nav-item ms-3">
                     <button id="themeToggle" class="btn btn-outline-light btn-sm" type="button">
                         <i class="fas fa-moon"></i>
                     </button>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -69,27 +97,20 @@
 @section Scripts {
     <script>
         const toggleButton = document.getElementById('themeToggle');
-        const icon = toggleButton?.querySelector('i');
+        const icon = toggleButton.querySelector('i');
+        const saved = localStorage.getItem('dark-mode') === 'true';
 
-        // Load saved theme preference
-        const savedTheme = localStorage.getItem('dark-mode');
-        if (savedTheme === 'true') {
-            document.body.classList.add('bg-dark', 'text-white');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        }
+        document.body.classList.toggle('bg-dark', saved);
+        document.body.classList.toggle('text-light', saved);
+        icon.classList.toggle('fa-sun', saved);
+        icon.classList.toggle('fa-moon', !saved);
 
-        if (toggleButton && icon) {
-            toggleButton.addEventListener('click', () => {
-                document.body.classList.toggle('bg-dark');
-                document.body.classList.toggle('text-white');
-                icon.classList.toggle('fa-sun');
-                icon.classList.toggle('fa-moon');
-
-                // Save theme preference
-                const darkModeEnabled = document.body.classList.contains('bg-dark');
-                localStorage.setItem('dark-mode', darkModeEnabled);
-            });
-        }
+        toggleButton.addEventListener('click', () => {
+            const nowDark = document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('text-light');
+            icon.classList.toggle('fa-sun', nowDark);
+            icon.classList.toggle('fa-moon', !nowDark);
+            localStorage.setItem('dark-mode', nowDark);
+        });
     </script>
 }
