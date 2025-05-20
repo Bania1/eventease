@@ -18,6 +18,7 @@ namespace EventEaseApp.Tests.Controllers
     /// Unit tests for TransactionsController, covering both GET and POST Create actions.
     /// </summary>
     [TestClass]
+    [DoNotParallelize]
     public class TransactionsControllerTests
     {
         private EventEaseContext _context = null!;
@@ -39,10 +40,14 @@ namespace EventEaseApp.Tests.Controllers
             _context.Events.Add(new Event { Id = 42, Price = 123.45m });
             _context.SaveChanges();
 
-            // Mock IWebHostEnvironment so _env.WebRootPath points to a temp folder
+            // Mock IWebHostEnvironment so WebRootPath points to a temp folder
             _envMock = new Mock<IWebHostEnvironment>();
-            _envMock.Setup(e => e.WebRootPath)
-                    .Returns(Path.Combine(Path.GetTempPath(), "txn-tests"));
+            var tempRoot = Path.Combine(Path.GetTempPath(), "txn-tests");
+            _envMock.Setup(env => env.WebRootPath).Returns(tempRoot);
+
+            // Create directories for QR codes
+            Directory.CreateDirectory(tempRoot);
+            Directory.CreateDirectory(Path.Combine(tempRoot, "qr-codes"));
 
             // Instantiate controller
             _controller = new TransactionsController(_context, _envMock.Object);
@@ -60,7 +65,7 @@ namespace EventEaseApp.Tests.Controllers
             var qrFolder = Path.Combine(_envMock.Object.WebRootPath, "qr-codes");
             if (Directory.Exists(qrFolder))
             {
-                try { Directory.Delete(qrFolder, recursive: true); }
+                try { Directory.Delete(qrFolder, true); }
                 catch (IOException) { /* ignore locked files */ }
             }
         }
@@ -76,13 +81,13 @@ namespace EventEaseApp.Tests.Controllers
             IActionResult result = _controller.Create(42);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(ViewResult), "Expected a ViewResult");
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
             var view = (ViewResult)result;
+            Assert.IsInstanceOfType(view.Model, typeof(TransactionCreateViewModel));
 
-            Assert.IsInstanceOfType(view.Model, typeof(TransactionCreateViewModel), "Wrong view-model type");
             var vm = (TransactionCreateViewModel)view.Model;
-            Assert.AreEqual(42, vm.EventId, "EventId should match seeded event");
-            Assert.AreEqual(123.45m, vm.Amount, "Amount should match seeded event price");
+            Assert.AreEqual(42, vm.EventId);
+            Assert.AreEqual(123.45m, vm.Amount);
         }
 
         /// <summary>
@@ -95,7 +100,7 @@ namespace EventEaseApp.Tests.Controllers
             IActionResult result = _controller.Create(999);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(NotFoundResult), "Expected 404 NotFound");
+            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         /// <summary>
@@ -105,15 +110,9 @@ namespace EventEaseApp.Tests.Controllers
         [TestMethod]
         public async Task Create_Post_InvalidModel_ReturnsViewWithSameModel()
         {
-            // Arrange: provide a dummy authenticated user
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.NameIdentifier, "1") }, "TestAuth"));
-            _controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext { User = user }
-            };
-
-            // Force ModelState invalid
+            // Arrange: dummy authenticated user
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, "1") }, "TestAuth"));
+            _controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = user } };
             _controller.ModelState.AddModelError("PaymentMethod", "Required");
 
             var badVm = new TransactionCreateViewModel { EventId = 42, Amount = 123.45m };
@@ -122,9 +121,9 @@ namespace EventEaseApp.Tests.Controllers
             IActionResult result = await _controller.Create(badVm);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(ViewResult), "Expected a ViewResult on invalid model");
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
             var view = (ViewResult)result;
-            Assert.AreSame(badVm, view.Model, "Should return same view-model when invalid");
+            Assert.AreSame(badVm, view.Model);
         }
 
         /// <summary>
@@ -135,14 +134,8 @@ namespace EventEaseApp.Tests.Controllers
         public async Task Create_Post_PaymentDeclined_ReturnsViewWithError()
         {
             // Arrange: dummy authenticated user
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.NameIdentifier, "3") }, "TestAuth"));
-            _controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext { User = user }
-            };
-
-            // Force payment decline path
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, "3") }, "TestAuth"));
+            _controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = user } };
             _controller.ModelState.AddModelError("PaymentMethod", "PaymentMethod is required");
 
             var vm = new TransactionCreateViewModel { EventId = 42, Amount = 123.45m };
@@ -151,68 +144,40 @@ namespace EventEaseApp.Tests.Controllers
             IActionResult result = await _controller.Create(vm);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(ViewResult), "Expected a ViewResult on payment decline");
-            var view = (ViewResult)result;
-            Assert.IsTrue(_controller.ModelState.ErrorCount > 0, "Expected ModelState errors on decline");
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            Assert.IsTrue(_controller.ModelState.ErrorCount > 0);
         }
 
         /// <summary>
-        /// POST Create with valid payment details should:
-        /// 1) save a Transaction and a Ticket,
-        /// 2) generate and write a QR-code PNG to disk,
-        /// 3) redirect to Tickets/MyTickets.
+        /// POST Create with valid payment details should save records, write QR-code, and redirect.
         /// </summary>
         [TestMethod]
         public async Task Create_Post_ValidPayment_SavesAndRedirects()
         {
-            // Arrange: valid payment info
-            var vm = new TransactionCreateViewModel
-            {
-                EventId = 42,
-                Amount = 123.45m,
-                PaymentMethod = "CreditCard",
-                CardNumber = "4111111111111111"
-            };
-
-            // Provide a dummy authenticated user
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.NameIdentifier, "7") }, "TestAuth"));
-            _controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext { User = user }
-            };
-
-            // Provide TempData to avoid null reference when setting TempData["Success"]
-            _controller.TempData = new TempDataDictionary(
-                _controller.ControllerContext.HttpContext,
-                Mock.Of<ITempDataProvider>()
-            );
+            // Arrange
+            var vm = new TransactionCreateViewModel { EventId = 42, Amount = 123.45m, PaymentMethod = "CreditCard", CardNumber = "4111111111111111" };
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, "7") }, "TestAuth"));
+            _controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = user } };
+            _controller.TempData = new TempDataDictionary(_controller.HttpContext, Mock.Of<ITempDataProvider>());
 
             // Act
-            IActionResult result = await _controller.Create(vm);
+            var result = await _controller.Create(vm);
 
-            // Assert redirection
-            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult), "Expected a redirect");
+            // Assert redirect
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
             var redirect = (RedirectToActionResult)result;
-            Assert.AreEqual("MyTickets", redirect.ActionName, "Should redirect to MyTickets");
-            Assert.AreEqual("Tickets", redirect.ControllerName, "Should redirect to Tickets controller");
+            Assert.AreEqual("MyTickets", redirect.ActionName);
+            Assert.AreEqual("Tickets", redirect.ControllerName);
 
-            // Assert Transaction saved
-            var txn = await _context.Transactions.FirstOrDefaultAsync(
-                t => t.UserId == 7 && t.EventId == 42
-            );
-            Assert.IsNotNull(txn, "Transaction was not saved in DB");
+            // Assert DB writes
+            var txn = await _context.Transactions.FirstAsync(t => t.UserId == 7 && t.EventId == 42);
+            var ticket = await _context.Tickets.FirstAsync(t => t.UserId == 7 && t.EventId == 42);
+            Assert.IsNotNull(txn);
+            Assert.IsNotNull(ticket);
 
-            // Assert Ticket saved
-            var ticket = await _context.Tickets.FirstOrDefaultAsync(
-                t => t.UserId == 7 && t.EventId == 42
-            );
-            Assert.IsNotNull(ticket, "Ticket was not saved in DB");
-
-            // Assert QR-code file created
-            var qrFolder = Path.Combine(_envMock.Object.WebRootPath, "qr-codes");
-            var expectedFile = Path.Combine(qrFolder, ticket!.QrCode + ".png");
-            Assert.IsTrue(File.Exists(expectedFile), "QR-code PNG was not generated");
+            // Assert QR code file
+            var file = Path.Combine(_envMock.Object.WebRootPath, "qr-codes", ticket.QrCode + ".png");
+            Assert.IsTrue(File.Exists(file));
         }
     }
 }
